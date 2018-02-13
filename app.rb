@@ -22,8 +22,8 @@ class App < Sinatra::Base
 
   get '/:operation/:number1/:number2' do
     # @op = params[:operation]
-    num1, num2 = params.values.slice(1,2).to_i
     binding.pry
+    num1, num2 = params.values.slice(1,2)
     case params[:operation]
     when 'add'
       "#{num1.to_i + num2.to_i}"
