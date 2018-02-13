@@ -21,16 +21,17 @@ class App < Sinatra::Base
   end
 
   get '/:operation/:number1/:number2' do
-    @op = params[:operation]
-    @num1, @num2 = params.values.slice(1,2)
-    if @op.include?("add") || @op.include?("addition")
-      "#{@num1.to_i + @num2.to_i}"
-    elsif @op.include?("subtract")
-      "#{@num1.to_i - @num2.to_i}"
-    elsif @op.include?("multiply")
-      "#{@num1.to_i * @num2.to_i}"
-    else
-      "#{@num1.to_i / @num2.to_i}"
+    # @op = params[:operation]
+    num1, num2 = params.values.slice(1,2)
+    case params[:operation]
+    when 'add'
+      "#{num1.to_i + num2.to_i}"
+    when 'subtract'
+      "#{num1.to_i - num2.to_i}"
+    when 'multiply'
+      "#{num1.to_i * num2.to_i}"
+    when 'divide'
+      "#{num1.to_i / num2.to_i}"
     end
   end
 
