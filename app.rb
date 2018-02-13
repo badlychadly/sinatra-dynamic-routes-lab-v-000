@@ -23,16 +23,17 @@ class App < Sinatra::Base
   get '/:operation/:number1/:number2' do
     # @op = params[:operation]
     binding.pry
-    num1, num2 = params.values.slice(1,2)
+    num1 = params[:number1].to_i
+    num2 = params[:number2].to_i
     case params[:operation]
     when 'add'
-      "#{num1.to_i + num2.to_i}"
+      "#{num1 + num2}"
     when 'subtract'
-      "#{num1.to_i - num2.to_i}"
+      "#{num1 - num2}"
     when 'multiply'
-      "#{num1.to_i * num2.to_i}"
+      "#{num1 * num2}"
     when 'divide'
-      "#{num1.to_i / num2.to_i}"
+      "#{num1 / num2}"
     end
   end
 
